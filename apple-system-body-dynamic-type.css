@@ -1,0 +1,22 @@
+/*
+apple-system-body-dynamic-type.css
+https://furbo.org/2024/07/04/dynamic-type-on-the-web/
+*/
+html {
+	font-size: 100%;
+	font: -apple-system-body;
+	font-family: system-ui;
+	line-height: 1.5;
+}
+
+.entry-header h1,
+.entry-header h2 {
+	font-size: 1.75rem;
+	line-height: 1.25;
+}
+
+@media screen and (min-width: 801px) {
+	body {
+		font-size: 1.25rem;
+	}
+}

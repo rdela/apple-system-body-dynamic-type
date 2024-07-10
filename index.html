@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 
+		this file
+		index.html
+		pairs with
+		apple-system-body-dynamic-type.css
+	 --><link rel="stylesheet" type="text/css" href="./apple-system-body-dynamic-type.css">
+</head><body>
+<main id="main" class="site-main" role="main">
+
+<article class="post type-post status-publish format-standard hentry category-design category-development">
+
+<div class="entry-header">
+<h1 class="entry-title"><a href="https://furbo.org/2024/07/04/dynamic-type-on-the-web/">Dynamic Type on the Web – furbo.org by Craig Hockenberry</a></h1>
+</div><!-- .entry-header -->
+
+<div class="entry-content">
+
+<p>[furbo.org, and this test page based on the post both now support] Dynamic Type on iOS and iPadOS. If you go to System Settings on your iPhone or iPad, and change the setting for <em>Display &amp; Brightness &gt; Text Size</em>, you’ll see the change reflected on this website.</p>
+
+<p>This is a big win for accessibility: many folks make this adjustment on their device to match their abilities. Just because you can read a tiny font doesn’t mean that I can. It also is a win for consistency: my site’s font size matches the other text that a visitor sees on their device.</p>
+
+<p>The best part is that this improvement can be realized with only a few lines of CSS:</p>
+
+<pre class="wp-block-preformatted">html {
+	font-size: 100%;
+	font: -apple-system-body;
+	font-family: system-ui;
+}</pre>
+
+<p>What’s going on here?</p>
+
+<p>The <code>font-size</code> property sets the default text size for the page. All browsers recognize this setting and so do you.</p>
+
+<p>The new addition is the <code>font</code> property with the <code>-apple-system-body</code> value. This font is the key to getting support for Dynamic Type. This feature has been in WebKit for almost a decade and is <a href="https://webkit.org/blog/3709/using-the-system-font-in-web-content/">fully documented</a>. This property overrides the <code>font-size</code> that was defined in the line above and our page now has a size that matches the system setting for body text.</p>
+
+<p><s>One unfortunate side effect of the <code>font</code> value is that it also sets the page in the system font. <a href="https://furbo.org/2018/03/28/system-fonts-in-css/">I like San Francisco</a>, but I don’t want it on my blog.</s> [Set family to <code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#system-ui">system-ui</a></code> for test page and adjusted sizes – <a href="https://rdela.com">Rd</a>]</p>
+
+<p>With <a href="https://mastodon.social/@josephduffy/112724880007396459">a hint from Mastodon</a>, it occurred to me that I could override the face with <code>font-family</code>. So I now have the best of both worlds: a size that makes my visitor happy and a font that makes me happy.</p>
+
+<p>One other addition that I made to my CSS was a tweak for desktop browsers. There is no Dynamic Type setting on macOS (yet?!) and the default size was a bit small for my taste. A <code>@media</code> rule fixed that:</p>
+
+<pre class="wp-block-preformatted">@media screen and (min-width: 801px) {
+	body {
+		font-size: 1.25rem;
+	}
+}</pre>
+
+<p>Now any browser window that’s wider than 800 points will get a slightly larger font.</p>
+
+<p>You can, of course, use any of the other predefined font values, such as <code>-apple-system-headline</code> or <code>-apple-system-footnote</code>, but you’ll also need to override the family with each use.</p>
+
+<p>But it’s likely that you’re already using <code>em</code> and <code>rem</code> sizes so that elements scale correctly in other contexts. By setting the base size in the <code>html</code> element, my rule for headers “just worked”:</p>
+
+<pre class="wp-block-preformatted">.entry-header h1,
+.entry-header h2 {
+	font-size: 1.75rem;
+	...
+}</pre>
+
+<p>Another important point: if you’re using WKWebView or SFSafariViewController on an Apple platform, it will have the same capabilities as you’ve seen above. This means that you can have dynamic text in a SwiftUI view and a web page that matches exactly. <a href="https://www.kickstarter.com/projects/iconfactory/project-tapestry">This is why</a> I needed to solve the problem in the first place.</p>
+
+<p>Take a moment to look at your blog, product, or company style sheet and think about how this approach to accessibility can improve things. If you’re like me, in a couple of hours you’ll have a much better site.</p>
+</div><!-- .entry-content -->
+
+<div class="entry-footer">
+Written on July 4th, 2024	for <a href="https://furbo.org/category/design/" rel="category tag">Design</a>, <a href="https://furbo.org/category/development/" rel="category tag">Development</a>
+</div><!-- .entry-footer -->
+
+</article>
+
+</main>
+</body></html>
