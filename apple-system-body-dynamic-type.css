@@ -9,6 +9,26 @@ html {
 	line-height: 1.5;
 }
 
+pre,
+code {
+	font-family: 'Monaco',monospace;
+	hyphens: none;
+	line-height: 1.5;
+	overflow-wrap: break-word;
+	tab-size: 2;
+	text-align: left;
+	white-space: pre;
+	word-break: break-word;
+	word-spacing: normal;
+}
+
+pre {
+	background-color: #eee;
+	margin: .90625rem 0 1.25rem;
+	overflow: auto;
+	padding: .25rem .75rem .3125rem;
+}
+
 .entry-header h1,
 .entry-header h2 {
 	font-size: 1.75rem;
