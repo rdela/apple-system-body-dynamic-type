@@ -1,4 +1,4 @@
-Adaptation of Craig Hockenberry’s 4 July 2024 article, [Dynamic Type on the Web](https://furbo.org/2024/07/04/dynamic-type-on-the-web/), into a test page for the CSS techniques described, to support: 
+Adaptation of Craig Hockenberry’s 4 July 2024 article, [Dynamic Type on the Web](https://furbo.org/2024/07/04/dynamic-type-on-the-web/), into a [test page](https://dynamictype.netlify.app/) for the CSS techniques described, to support: 
 
 > Dynamic Type on iOS and iPadOS. If you go to System Settings on your iPhone or iPad, and change the setting for *Display &amp; Brightness &gt; Text Size*, you’ll see the change reflected on this website.
 
