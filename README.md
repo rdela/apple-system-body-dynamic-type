@@ -42,7 +42,7 @@ Back to Craig Hockenberry:
 
 However your font-sizing rules will likely work as is, because: 
 
-it’s likely that you’re already using `em` and `rem` sizes so that elements scale correctly in other contexts.
+> it’s likely that you’re already using `em` and `rem` sizes so that elements scale correctly in other contexts.
 
 ```css
 h1,
