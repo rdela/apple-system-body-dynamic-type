@@ -1,4 +1,10 @@
-Adaptation of Craig Hockenberry’s 4 July 2024 article, [Dynamic Type on the Web](https://furbo.org/2024/07/04/dynamic-type-on-the-web/), into a [test page](https://dynamictype.netlify.app/) for the CSS techniques described, to support: 
+# [Dynamic Type on the Web with -apple-system-body](https://github.com/rdela/apple-system-body-dynamic-type)
+
+Adaptation of Craig Hockenberry’s 4 July 2024 article: 
+
+## [Dynamic Type on the Web](https://furbo.org/2024/07/04/dynamic-type-on-the-web/)
+
+…into a [test page](https://dynamictype.netlify.app/) for [the CSS](./apple-system-body-dynamic-type.css) techniques described with family to set to `system-ui` and sizes adjusted, to support: 
 
 > Dynamic Type on iOS and iPadOS. If you go to System Settings on your iPhone or iPad, and change the setting for *Display &amp; Brightness &gt; Text Size*, you’ll see the change reflected on this website.
 
@@ -14,9 +20,37 @@ html {
 }
 ```
 
-Where `font-size` sets a text size for platforms that do not adapt to `-apple-system-body`, which I recommend setting to `100%`, that gets overridden in `font` for systems that do adapt to `-apple-system-body`, and `font-family` then overrides `-apple-system-body` to be whatever typeface you want, the simplest and most universally compatible option being [`system-ui`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#system-ui) where: 
+Where `font-size` sets a text size for platforms that do not adapt to `-apple-system-body`, which I recommend setting to `100%`, that gets overridden in `font` for systems that do adapt to `-apple-system-body`, and `font-family` then overrides `-apple-system-body` to be whatever typeface you want, the simplest and most universally compatible option being `system-ui` where, [in MDN’s words](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#system-ui): 
 
 > Glyphs are taken from the default user interface font on a given platform. Because typographic traditions vary widely across the world, this generic is provided for typefaces that don't map cleanly into the other generics.
+
+Back to Craig Hockenberry: 
+
+> One other addition that I made to my CSS was a tweak for desktop browsers. There is no Dynamic Type setting on macOS (yet?!) and the default size was a bit small for my taste. A `@media` rule fixed that:
+
+```css
+@media screen and (min-width: 801px) {
+	body {
+		font-size: 1.25rem;
+	}
+}
+```
+
+> Now any browser window that’s wider than 800 points will get a slightly larger font.
+
+> You can, of course, use any of the other predefined font values, such as `-apple-system-headline` or `-apple-system-footnote`, but [you also may want] to override the family with each use.
+
+However your font-sizing rules will likely work as is, because: 
+
+it’s likely that you’re already using `em` and `rem` sizes so that elements scale correctly in other contexts.
+
+```css
+h1,
+h2 {
+	font-size: 1.75rem;
+	line-height: 1.25;
+}
+```
 
 The [World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) Accessibility Guidelines Working Group (AGWG) Mobile Accessibility Task Force (MATF)](https://www.w3.org/WAI/about/groups/task-forces/matf/) covers the technical specifications in [Mobile Technique – Specifying a system font in web content to support platform text resize without browser or platform assistive technology zoom](https://www.w3.org/WAI/GL/mobile-a11y-tf/wiki/Specifying_a_system_font_in_web_content_to_support_platform_text_resize_without_browser_or_platform_assistive_technology_zoom.#User_Agent_and_Assistive_Technology_Support_Notes):
 

@@ -1,13 +1,26 @@
 /*
 apple-system-body-dynamic-type.css
-https://furbo.org/2024/07/04/dynamic-type-on-the-web/
 https://github.com/rdela/apple-system-body-dynamic-type
+inspired by
+https://furbo.org/2024/07/04/dynamic-type-on-the-web/
 */
 html {
 	font-size: 100%;
 	font: -apple-system-body;
 	font-family: system-ui;
 	line-height: 1.5;
+}
+
+@media screen and (min-width: 801px) {
+	body {
+		font-size: 1.25rem;
+	}
+}
+
+h1,
+h2 {
+	font-size: 1.75rem;
+	line-height: 1.25;
 }
 
 pre,
@@ -28,16 +41,4 @@ pre {
 	margin: .90625rem 0 1.25rem;
 	overflow: auto;
 	padding: .25rem .75rem .3125rem;
-}
-
-.entry-header h1,
-.entry-header h2 {
-	font-size: 1.75rem;
-	line-height: 1.25;
-}
-
-@media screen and (min-width: 801px) {
-	body {
-		font-size: 1.25rem;
-	}
 }
