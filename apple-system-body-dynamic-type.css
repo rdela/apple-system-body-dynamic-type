@@ -3,11 +3,14 @@ apple-system-body-dynamic-type.css
 https://github.com/rdela/apple-system-body-dynamic-type
 inspired by
 https://furbo.org/2024/07/04/dynamic-type-on-the-web/
+font-size-adjust
+https://front-end.social/@jensimmons/112842454415587676
 */
 html {
 	font-size: 100%;
 	font: -apple-system-body;
 	font-family: system-ui;
+	font-size-adjust: from-font;
 	line-height: 1.5;
 }
 
