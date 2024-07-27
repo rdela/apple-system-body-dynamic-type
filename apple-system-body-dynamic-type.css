@@ -45,3 +45,9 @@ pre {
 	overflow: auto;
 	padding: .25rem .75rem .3125rem;
 }
+
+blockquote {
+	border-inline-start: solid 4px gainsboro;
+	margin-inline: 0 2rem;
+	padding-inline-start: 2rem;
+}
