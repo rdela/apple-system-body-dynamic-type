@@ -7,6 +7,7 @@
 		pairs with
 		apple-system-body-dynamic-type.css
 	 --><link rel="stylesheet" type="text/css" href="./apple-system-body-dynamic-type.css">
+	<link href="./prism.css" rel="stylesheet" />
 </head><body>
 <main id="main" role="main">
 
@@ -14,11 +15,26 @@
 
 <h1 id="dynamic-type-on-the-web-with--apple-system-body"><a href="https://github.com/rdela/apple-system-body-dynamic-type">Dynamic Type on the Web with -apple-system-body</a></h1>
 
-<p>Adaptation of Craig Hockenberry’s 4 July 2024 article:</p>
+<p><strong>UPDATE 2024-07-26</strong></p>
+
+<ul>
+<li><p>Added <code>font-size-adjust: from-font;</code></p>
+
+<ul>
+<li>Let <a href="https://front-end.social/@jensimmons/112842454415587676">Jen Simmons</a> explain how it works in <a href="https://youtu.be/uadAfE6cAoM?t=1338">4 minutes</a></li>
+<li>Read <a href="https://web.dev/blog/font-size-adjust">CSS font-size-adjust is now in Baseline</a> by Rachel Andrew for web.dev</li>
+<li>Learn about <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size-adjust">font-size-adjust on MDN</a></li>
+<li>Answer the age-old question: <a href="https://caniuse.com/font-size-adjust">Can I use font-size-adjust?</a></li>
+</ul>
+</li>
+</ul>
+
+
+<p>This is an adaptation of <strong>CRAIG HOCKENBERRY’s 4 July 2024</strong> article:</p>
 
 <h2 id="dynamic-type-on-the-web"><a href="https://furbo.org/2024/07/04/dynamic-type-on-the-web/">Dynamic Type on the Web</a></h2>
 
-<p>…into a <a href="https://dynamictype.netlify.app/">test page</a> for <a href="./apple-system-body-dynamic-type.css">the CSS</a> techniques described with family to set to <code>system-ui</code> and sizes adjusted, to support:</p>
+<p>…into a <a href="https://dynamictype.netlify.app/">test page</a> for <a href="./apple-system-body-dynamic-type.css">the CSS</a> techniques described (with family to set to <code>system-ui</code> and sizes adjusted) to support:</p>
 
 <blockquote><p>Dynamic Type on iOS and iPadOS. If you go to System Settings on your iPhone or iPad, and change the setting for <em>Display &amp; Brightness &gt; Text Size</em>, you’ll see the change reflected on this website.</p>
 
@@ -26,12 +42,13 @@
 
 <p>The best part is that this improvement can be realized with only a few lines of CSS:</p></blockquote>
 
-<pre><code class="css">html {
-	font-size: 100%;
-	font: -apple-system-body;
-	font-family: system-ui;
-}</code></pre>
-
+<pre><code class="language-css">
+html {
+    font-size: 100%;
+    font: -apple-system-body;
+    font-family: system-ui;
+}
+</code></pre>
 
 <p>Where <code>font-size</code> sets a text size for platforms that do not adapt to <code>-apple-system-body</code>, which I recommend setting to <code>100%</code>, that gets overridden in <code>font</code> for systems that do adapt to <code>-apple-system-body</code>, and <code>font-family</code> then overrides <code>-apple-system-body</code> to be whatever typeface you want, the simplest and most universally compatible option being <code>system-ui</code> where, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#system-ui">in MDN’s words</a>:</p>
 
@@ -41,12 +58,13 @@
 
 <blockquote><p>One other addition that I made to my CSS was a tweak for desktop browsers. There is no Dynamic Type setting on macOS (yet?!) and the default size was a bit small for my taste. A <code>@media</code> rule fixed that:</p></blockquote>
 
-<pre><code class="css">@media screen and (min-width: 801px) {
-	body {
-		font-size: 1.25rem;
-	}
-}</code></pre>
-
+<pre><code class="language-css">
+@media screen and (min-width: 801px) {
+    body {
+        font-size: 1.25rem;
+    }
+}
+</code></pre>
 
 <blockquote><p>Now any browser window that’s wider than 800 points will get a slightly larger font.</p>
 
@@ -56,12 +74,13 @@
 
 <blockquote><p>it’s likely that you’re already using <code>em</code> and <code>rem</code> sizes so that elements scale correctly in other contexts.</p></blockquote>
 
-<pre><code class="css">h1,
+<pre><code class="language-css">
+h1,
 h2 {
-	font-size: 1.75rem;
-	line-height: 1.25;
-}</code></pre>
-
+    font-size: 1.75rem;
+    line-height: 1.25;
+}
+</code></pre>
 
 <p>The <a href="https://www.w3.org/WAI/about/groups/task-forces/matf/">World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) Accessibility Guidelines Working Group (AGWG) Mobile Accessibility Task Force (MATF)</a> covers the technical specifications in <a href="https://www.w3.org/WAI/GL/mobile-a11y-tf/wiki/Specifying_a_system_font_in_web_content_to_support_platform_text_resize_without_browser_or_platform_assistive_technology_zoom.#User_Agent_and_Assistive_Technology_Support_Notes">Mobile Technique – Specifying a system font in web content to support platform text resize without browser or platform assistive technology zoom</a>:</p>
 
@@ -81,4 +100,5 @@ h2 {
 </article>
 
 </main>
+<script src="./prism.js"></script>
 </body></html>
